@@ -1,16 +1,27 @@
 package com.example.implicitintentdemo
 
+import android.Manifest
+import android.app.AlertDialog
 import android.app.SearchManager
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.implicitintentdemo.databinding.ActivityMainBinding
+import permissions.dispatcher.*
 
+@RuntimePermissions
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+
+    companion object {
+        const val REQUEST_CALL_STATE = 1001
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +41,39 @@ class MainActivity : AppCompatActivity() {
             binding.ivData.setImageURI(uri)
         }
 
+
+        binding.btnIntentDial.setOnClickListener {
+            intentDialWithPermissionCheck()
+        }
+
+        //requestPermission()
+    }
+
+    @OnPermissionDenied(Manifest.permission.CALL_PHONE)
+    fun onCameraDenied() {
+        Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+    }
+
+    @OnNeverAskAgain(Manifest.permission.CALL_PHONE)
+    fun onCameraNeverAskAgain() {
+        Toast.makeText(this, "Permission never asked again", Toast.LENGTH_SHORT).show()
+    }
+
+    @OnShowRationale(Manifest.permission.CALL_PHONE)
+    fun showRationaleDialog(
+        request: PermissionRequest
+    ) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Engedély")
+            .setMessage("Szükséges a teszthez")
+            .setPositiveButton("Ok") { _, _ ->
+                request.proceed()
+            }
+            .setNegativeButton("Cancel") { _, _ ->
+                request.cancel()
+            }
+        builder.create().show()
+
     }
 
     fun intentSearch(v: View) {
@@ -38,10 +82,21 @@ class MainActivity : AppCompatActivity() {
         startActivity(intentSearch)
     }
 
+    /*
     fun intentDial(v: View) {
         // val intentDial = Intent(Intent.ACTION_CALL, Uri.parse("tel:+36123456789"))
         val intentDial = Intent(Intent.ACTION_DIAL, Uri.parse("tel:+36123456789"))
         startActivity(intentDial)
+    }
+    */
+
+    @NeedsPermission(Manifest.permission.CALL_PHONE)
+    fun intentDial() {
+        val intentDial = Intent(Intent.ACTION_CALL, Uri.parse("tel:+36123456789"))
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            startActivity(intentDial)
+        }
     }
 
     fun intentSend(v: View) {
@@ -73,4 +128,55 @@ class MainActivity : AppCompatActivity() {
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)
     }
+
+    /*private fun requestPermission() {
+       if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE)
+           != PackageManager.PERMISSION_GRANTED
+       ) {
+           if (shouldShowRequestPermissionRationale(android.Manifest.permission.CALL_PHONE)) {
+               showRationaleDialog(
+                   "Engedély kérés",
+                   "Szükség van rá, mivel ezt teszteljük",
+                   android.Manifest.permission.CALL_PHONE,
+                   REQUEST_CALL_STATE
+               )
+           } else {
+               requestPermissions(
+                   arrayOf(android.Manifest.permission.CALL_PHONE),
+                   REQUEST_CALL_STATE
+               )
+           }
+       } else {
+           // Permission is already granted
+       }
+   }
+   override fun onRequestPermissionsResult(
+       requestCode: Int,
+       permissions: Array<out String>,
+       grantResults: IntArray
+   ) {
+       when (requestCode) {
+           REQUEST_CALL_STATE -> {
+               if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                   Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show()
+               } else {
+                   Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+               }
+           }
+       }
+   }
+   private fun showRationaleDialog(
+       title: String,
+       message: String,
+       permission: String,
+       requestCode: Int
+   ) {
+       val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+       builder.setTitle(title)
+           .setMessage(message)
+           .setPositiveButton("Ok") { _, _ ->
+               requestPermissions(arrayOf(permission), requestCode)
+           }
+       builder.create().show()
+   }*/
 }
