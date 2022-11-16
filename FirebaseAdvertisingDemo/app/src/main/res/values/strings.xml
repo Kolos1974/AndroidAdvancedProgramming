@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FirebaseAdvertisingDemo</string>
+    <string name="title_activity_advertising">AdvertisingActivity</string>
+    <string name="action_settings">Settings</string>
+</resources>

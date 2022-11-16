@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "598139402166",
+    "project_id": "fir-advertisingdemo",
+    "storage_bucket": "fir-advertisingdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598139402166:android:b48f8c84fef95f40133317",
+        "android_client_info": {
+          "package_name": "hu.kolos.karlovitz.firebaseadvertisingdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598139402166-msne0shuksrjhcjd54jbht5fq68951gi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlGSCHzRilvjw_edb09SPCaUTiHkVhCCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598139402166-msne0shuksrjhcjd54jbht5fq68951gi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
