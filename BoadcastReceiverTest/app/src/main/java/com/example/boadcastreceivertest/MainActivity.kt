@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        /* A service miatt lett levéve!!  */
         /*
         airPlaneReceiver = AirPlaneReceiver()
         screenReceiver = ScreenReceiver()

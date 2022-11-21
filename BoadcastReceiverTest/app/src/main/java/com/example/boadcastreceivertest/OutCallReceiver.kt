@@ -13,7 +13,7 @@ class OutCallReceiver : BroadcastReceiver() {
 
         //this.resultData = "1001"
 
-        // Egy activity-t is elindít
+        // Egy activity-t is elindít, broadcast receiver segítségével!
         var intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         context.startActivity(intent)
