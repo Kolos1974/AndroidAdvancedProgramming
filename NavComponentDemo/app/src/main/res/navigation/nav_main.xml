@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_main">
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragmentMain">
 
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="com.example.navcomponentdemo.FragmentMain"
+        android:label="FragmentMain" >
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="com.example.navcomponentdemo.FragmentDetail"
+        android:label="FragmentDetail" >
+        <argument
+            android:name="person"
+            app:argType="com.example.navcomponentdemo.Person" />
+    </fragment>
 </navigation>
