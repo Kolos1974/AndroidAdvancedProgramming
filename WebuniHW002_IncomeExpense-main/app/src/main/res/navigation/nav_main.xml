@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragmentPageOne">
+
+    <fragment
+        android:id="@+id/fragmentPageOne"
+        android:name="com.example.webunihw002.FragmentPageOne"
+        android:label="FragmentPageOne">
+        <action
+            android:id="@+id/action_fragmentPageOne_to_fragmentPageTwo2"
+            app:destination="@id/fragmentPageTwo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentPageTwo"
+        android:name="com.example.webunihw002.FragmentPageTwo"
+        android:label="FragmentPageTwo" >
+    </fragment>
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.webunihw002.MainActivity"
+        android:label="MainActivity">
+    </activity>
+
+</navigation>

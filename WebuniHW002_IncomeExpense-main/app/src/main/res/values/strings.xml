@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WebuniHW002_IncomeExpense</string>
+
+    <string-array name="tab_names">
+        <item>Bevétel</item>
+        <item>Kiadás</item>
+    </string-array>
+
+</resources>
