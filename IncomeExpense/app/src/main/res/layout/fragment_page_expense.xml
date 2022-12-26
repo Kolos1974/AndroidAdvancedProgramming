@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kipróbáélmni Fragment Layout-al!! -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentPageExpense"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="Expense"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/edittext_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Írd be az összeget!"
+        android:layout_margin="12dp"
+        android:inputType="number"/>
+    <Button
+        android:id="@+id/button_expense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="Rögzít"/>
+
+</LinearLayout>
