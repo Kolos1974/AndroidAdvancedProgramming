@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SportTracker</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_maps_key">AIzaSyAchds2Fjze7-5i1MH9grg9_6RBiuMnhrw</string>
+</resources>
