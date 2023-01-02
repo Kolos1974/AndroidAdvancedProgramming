@@ -48,14 +48,12 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intentCamera, REQUEST_CODE_CAMERA)
         }
 
-        /*
         binding.btnVideo.setOnClickListener {
             val intentVideo = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
             intentVideo.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5)
             startActivityForResult(intentVideo, REQUEST_VIDEO_CAPTURE)
         }
 
-         */
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -65,12 +63,9 @@ class MainActivity : AppCompatActivity() {
                 binding.imageView.setImageBitmap(imageBitmap)
             } else if (requestCode == REQUEST_VIDEO_CAPTURE) {
                 val videoUri: Uri = data!!.data!!
-                /*
                 binding.videoView.setOnPreparedListener { mp -> mp.isLooping = true }
                 binding.videoView.setVideoURI(videoUri)
                 binding.videoView.start()
-
-                 */
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
